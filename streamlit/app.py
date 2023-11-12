@@ -25,7 +25,7 @@ if st.button("Convert"):
     if uploaded_file is not None and image is not None:
         files = {"file": uploaded_file.getvalue()}
         with st.spinner("Wait for it..."):
-            response = requests.post("http://0.0.0.0:8000/predict/", files=files)
+            response = requests.post("http://0.0.0.0:8000", files=files)
         latex_code = response.json()["data"]["pred"]
         st.code(latex_code)
         st.markdown(f"${latex_code}$")
